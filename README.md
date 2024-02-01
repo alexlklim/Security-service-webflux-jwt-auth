@@ -2,6 +2,10 @@
 
 ![image](https://github.com/alexlklim/Security-service-webflux/assets/91628959/c6beb215-5e75-4be2-b0c3-630a27de05f5)
 
+# TECHNOLOGIES
+
+Spring Boot, Web Flux, Sucuriry, R2DBC, JWT, token-based authentication, PostgreSQL, Lombok
+
 # DEPENDENCIES
 
 ![image](https://github.com/alexlklim/Security-service-webflux/assets/91628959/6a25a8ed-321c-4336-94f9-47ff77040bf5)
