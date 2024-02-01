@@ -3,7 +3,7 @@ package com.alex.inventory.config;
 
 import com.alex.inventory.security.AuthManager;
 import com.alex.inventory.security.BearerTokenServerAuthConverter;
-import com.alex.inventory.security.TokenAuthProvider;
+import com.alex.inventory.security.providers.TokenAuthProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class SecurityConfig {
     private String secret;
 
 
-    private final String[] publicRoutes = {"/api/auth/register", "/api/auth/login"};
+    private final String[] publicRoutes = {"/api/auth/login", "/api/auth/refresh-token"};
 
     @Bean
     public SecurityWebFilterChain filterChain(ServerHttpSecurity http, AuthManager authManager) {
@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .pathMatchers(publicRoutes).permitAll()
+                .pathMatchers("/register").hasRole("ADMIN")
                 .anyExchange().authenticated()
                 .and()
                 .exceptionHandling()
@@ -50,7 +51,6 @@ public class SecurityConfig {
                 .addFilterAt(bearerAuthFilter(authManager), SecurityWebFiltersOrder.AUTHENTICATION)
                 .build();
     }
-
 
     private AuthenticationWebFilter bearerAuthFilter(AuthManager authManager){
         AuthenticationWebFilter bearerAuthFilter = new AuthenticationWebFilter(authManager);

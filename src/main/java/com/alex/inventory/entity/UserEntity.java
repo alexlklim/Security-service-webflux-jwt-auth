@@ -2,6 +2,8 @@ package com.alex.inventory.entity;
 
 
 import com.alex.inventory.entity.enums.Role;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
@@ -24,6 +26,8 @@ public class UserEntity {
     private boolean enabled;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+
 
 
     @ToString.Include(name = "password")

@@ -1,4 +1,4 @@
-package com.alex.inventory.security;
+package com.alex.inventory.security.providers;
 
 
 import com.alex.inventory.entity.enums.ErrorCode;

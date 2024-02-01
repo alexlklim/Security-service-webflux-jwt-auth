@@ -1,5 +1,6 @@
 package com.alex.inventory.security;
 
+import com.alex.inventory.security.providers.TokenAuthProvider;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

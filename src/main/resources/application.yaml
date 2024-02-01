@@ -4,8 +4,12 @@ server:
     context-path: /demo
 jwt:
   secret: 984hg493gh0439rthr0429uruj2309yh937gc763fe87t3f89723gf
-  expiration: 3600
+  expiration: 900
   issuer: csmm
+
+my:
+  server:
+    address: localhost:8081/api/auth/activate
 
 
 
@@ -21,3 +25,6 @@ spring:
   mvc:
     problemdetails:
       enabled: true
+
+
+

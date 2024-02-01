@@ -1,8 +1,12 @@
 package com.alex.inventory.service;
 
 
+import com.alex.inventory.dto.AuthRequestDto;
+import com.alex.inventory.dto.AuthResponseDto;
 import com.alex.inventory.entity.UserEntity;
 import com.alex.inventory.repo.UserRepo;
+import com.alex.inventory.security.TokenDetails;
+import com.alex.inventory.util.Constant;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,6 +38,16 @@ public class UserService {
 
 
     }
+
+    public AuthResponseDto createAuthResponseDto(TokenDetails tokenDetails){
+         return AuthResponseDto.builder().userId(tokenDetails.getUserId())
+                .token(tokenDetails.getToken()).issuedAt(tokenDetails.getIssuedAt())
+                .expiresAt(tokenDetails.getExpiresAt()).role(tokenDetails.getRole())
+                .refreshToken(tokenDetails.getRefreshToken())
+                .build();
+    }
+
+
 
 
     public Mono<Boolean> checkIfUserExistsByUsername(String username){
